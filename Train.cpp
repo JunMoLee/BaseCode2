@@ -110,6 +110,10 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
+
+		       int k=2; // k=kernel size;
+		       int h=2; // h=number of hidden layer slice
+		       int hiddenpiece= param->nHide/h;
 				
 /*Optimization functions*/
 double gradt;
@@ -555,12 +559,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				
 				    
-				                           int areanumber1;
+				                           int areanumber1=0;
 				                           double learningrateIH [4];
 				                           // classify area by index
-				                             if ((jj>=0) && (jj<=99) && (k>=0) && (k<=399)) // default case = HO total synapses
-							     { areanumber1 = 0;
-							     }
+			                                     for (int i=0; i<20; i+=k){
+			                                       for (int j=i; j<400; j+=20*k){ // classify input layer area
+
+		                                                 for (int t=0; t<h; t++) {  // classify hidden layer area
 								     
 				                               
 				                           
@@ -971,9 +976,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           int areanumber2;
 				                           double learningrateHO [4];
 				                           // classify area by index
-				                             if ((jj>=0) && (jj<=9) && (k>=0) && (k<=99)) // default case = HO total synapses
-							     { areanumber2 = 0;
-							     }
+				                        for (int m=0; m<param->nOutput; m++) { // classify output area
+			    for (int t=0; t<h; t++) {  // classify hidden layer area
+				double possatsum2=0, negsatsum2=0;
+				double posstepcount2=0, negstepcount2=0;
+				double possigcount2=0, negsigcount2=0;
+				double zerosigcount2=0;
+				double weightsum2=0;
+			      for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
 								     
 				                               
 				                           
@@ -1306,9 +1316,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
 
-		       int k=2; // k=kernel size;
-		       int h=2; // h=number of hidden layer slice
-		       int hiddenpiece= param->nHide/h;
+
 		       int areanum=0;
                           
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
