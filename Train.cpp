@@ -1324,15 +1324,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			} // end of full-reset code
 			
-		       /* saturation count */
+		      /* saturation count */
 			
-			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
+		       if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
 
 
-		       int areanum=0;
+		        int areanum=0;
                           
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl;
+			       
+			       
 			 // weight IH
 
 				
@@ -1347,18 +1349,18 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double zerosigcount1=0;
 				 areanum = t+ ( 400/(20*k)*(i/k)+(j-i)/(20*k) )*h;
 				     
-			      for (int m=t*hiddenpiece; m<t*(hiddenpiece+1); m++)  {
-			      for (int a=0; a<k; a+=1){
-			      for (int b=0; b<20*k; b+=20){
-				int n = j+a+b;
-				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
-				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
-				posstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
-				 negstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
-				 possigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc;
-				 negsigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
-				 zerosigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
-				 weightsum1+=weight1[m][n];
+			       for (int m=t*hiddenpiece; m<t*(hiddenpiece+1); m++)  {
+			        for (int a=0; a<k; a+=1){
+			         for (int b=0; b<20*k; b+=20){
+				  int n = j+a+b;
+				  possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
+				  negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
+				  posstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
+				  negstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
+				  possigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc;
+				  negsigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
+				  zerosigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
+				  weightsum1+=weight1[m][n];
 				      
 
 				 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
