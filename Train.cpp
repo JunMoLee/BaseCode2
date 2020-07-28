@@ -47,7 +47,7 @@
 #include "Array.h"
 #include "Mapping.h"
 #include "NeuroSim.h"
-#include "cmath"
+
 
 using namespace std;
 
