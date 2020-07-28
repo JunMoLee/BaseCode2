@@ -112,7 +112,7 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
 
-		       int k=2; // k=kernel size;
+		       int k=10; // k=kernel size;
 		       int h=2; // h=number of hidden layer slice
 		       int hiddenpiece= param->nHide/h;
 				
@@ -1374,10 +1374,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegsatsum1[areanum] = negsatsum1;
 				    prevposstepcount1[areanum] = posstepcount1;
 				    prevnegstepcount1[areanum] = negstepcount1;
-				  /*  prevpossigcount1= possigcount2;
+				 /* prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum1[areanum] = weightsum1;
-				   /* prevzerosigcount1[area] = zerosigcount1; */
+				 /* prevzerosigcount1[area] = zerosigcount1; */
 				
 				    
 			    }
@@ -1392,14 +1392,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		         cout << "OH"<<endl;	
 				
 		          for (int m=0; m<param->nOutput; m++) { // classify output area
-			    for (int t=0; t<h; t++) {  // classify hidden layer area
+			   for (int t=0; t<h; t++) {  // classify hidden layer area
 				double possatsum2=0, negsatsum2=0;
 				double posstepcount2=0, negstepcount2=0;
 				double possigcount2=0, negsigcount2=0;
 				double zerosigcount2=0;
 				double weightsum2=0;
 				areanum = 400/(20*k)*(20/k) + m*h +t;
-			      for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
+				    
+			     for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
 				  
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
 				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
@@ -1412,21 +1413,21 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
-			    }
+			     }
 				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0);
 				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2<<endl;
 				    prevpossatsum2[areanum] = possatsum2;
 				    prevnegsatsum2[areanum] = negsatsum2;
 				    prevposstepcount2[areanum] = posstepcount2;
 				    prevnegstepcount2[areanum] = negstepcount2;
-				  /*  prevpossigcount2= possigcount2;
+				 /* prevpossigcount2= possigcount2;
 				    prevnegsigcount2= negsigcount2; */
 				    prevweightsum2[areanum] = weightsum2;
-				   /* prevzerosigcount2[area] = zerosigcount2; */
+				 /* prevzerosigcount2[area] = zerosigcount2; */
 				    
 
-			    }
-			  }
+			       }
+			        }
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: " << possatsum1/param->RefreshRate/40000<< ", " <<possatsum1/param->RefreshRate/40000*100<<"%";
 			cout <<" avg IH negative sat: " << negsatsum1/param->RefreshRate/40000<<", " <<negsatsum1/param->RefreshRate/40000*100<<"%";
