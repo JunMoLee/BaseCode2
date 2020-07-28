@@ -47,6 +47,7 @@
 #include "Array.h"
 #include "Mapping.h"
 #include "NeuroSim.h"
+#include "cmath"
 
 using namespace std;
 
@@ -561,12 +562,22 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    
 				                           int areanumber1=0;
 				                           double learningrateIH [4];
-				                           // classify area by index
+				                 /*          // classify area by index
 			                                     for (int i=0; i<20; i+=k){
-			                                       for (int j=i; j<400; j+=20*k){ // classify input layer area
-
-		                                                 for (int t=0; t<h; t++) {  // classify hidden layer area
-								     
+			                                      for (int j=i; j<400; j+=20*k){ // classify input layer area
+		                                               for (int t=0; t<h; t++) {  // classify hidden layer area
+							        for (int m=t*hiddenpiece; m<t*(hiddenpiece+1); m++)  {
+			                                         for (int a=0; a<k; a+=1){
+			                                          for (int b=0; b<20*k; b+=20){
+				                                   int n = j+a+b;
+							            if((jj==m) && (k==n)) {areanumber1 = 400/(20*k)*i/k+(j-i)/(20*k); break;}
+								    }
+								     }
+								      }
+							               }
+							                }
+							                 }  */
+							             
 				                               
 				                           
 				                           switch (areanumber1) // allocate learning rate for each area
@@ -973,17 +984,18 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */			        /* weight HO update */
-				                           int areanumber2;
+				                           int areanumber2=0;
 				                           double learningrateHO [4];
 				                           // classify area by index
-				                        for (int m=0; m<param->nOutput; m++) { // classify output area
-			    for (int t=0; t<h; t++) {  // classify hidden layer area
-				double possatsum2=0, negsatsum2=0;
-				double posstepcount2=0, negstepcount2=0;
-				double possigcount2=0, negsigcount2=0;
-				double zerosigcount2=0;
-				double weightsum2=0;
-			      for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
+                                                          
+								   
+		/*	for (int m=0; m<param->nOutput; m++) { // classify output area
+			 for (int t=0; t<h; t++) {  // classify hidden layer area
+			   for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
+			       if((jj==m) && (k==n)) {areanumber2 = 400/(20*k)*(20/k)+h*m+t; break;}
+			      }
+			       }
+			        }    */
 								     
 				                               
 				                           
@@ -1327,13 +1339,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			   for (int i=0; i<20; i+=k){
 			    for (int j=i; j<400; j+=20*k){ // classify input layer area
-
 		             for (int t=0; t<h; t++) {  // classify hidden layer area
 				 double possatsum1=0, negsatsum1=0;
 				 double posstepcount1=0, negstepcount1=0;
 				 double possigcount1=0, negsigcount1=0;
 				 double weightsum1=0;
 				 double zerosigcount1=0;
+				 areanum = 400/(20*k)*(i/k)+(j-i)/(20*k);
+				     
 			      for (int m=t*hiddenpiece; m<t*(hiddenpiece+1); m++)  {
 			      for (int a=0; a<k; a+=1){
 			      for (int b=0; b<20*k; b+=20){
@@ -1355,7 +1368,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-			cout<<"area "<<areanum<<" "<<((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0)<<(prevweightsum1[areanum]>0)<<((prevpossatsum1[areanum]-prevnegsatsum1[areanum])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0)<<endl;
+			cout<<"area "<<areanum<<" "<<((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0)<<(prevweightsum1[areanum]>0)<<((prevpossatsum1[areanum]-prevnegsatsum1[areanum])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0);
+		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1<<endl;
 				    prevpossatsum1[areanum] = possatsum1;
 				    prevnegsatsum1[areanum] = negsatsum1;
 				    prevposstepcount1[areanum] = posstepcount1;
@@ -1364,7 +1378,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum1[areanum] = weightsum1;
 				   /* prevzerosigcount1[area] = zerosigcount1; */
-				    areanum++;
+				
 				    
 			    }
 				 
@@ -1384,6 +1398,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				double possigcount2=0, negsigcount2=0;
 				double zerosigcount2=0;
 				double weightsum2=0;
+				areanum = 400/(20*k)*(20/k) + m*h +t;
 			      for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
 				  
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
@@ -1398,7 +1413,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0);
+				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2<<endl;
 				    prevpossatsum2[areanum] = possatsum2;
 				    prevnegsatsum2[areanum] = negsatsum2;
 				    prevposstepcount2[areanum] = posstepcount2;
@@ -1407,7 +1423,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegsigcount2= negsigcount2; */
 				    prevweightsum2[areanum] = weightsum2;
 				   /* prevzerosigcount2[area] = zerosigcount2; */
-				    areanum++;
+				    
 
 			    }
 			  }
