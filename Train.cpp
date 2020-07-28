@@ -1345,7 +1345,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double possigcount1=0, negsigcount1=0;
 				 double weightsum1=0;
 				 double zerosigcount1=0;
-				 areanum = 400/(20*k)*(i/k)+(j-i)/(20*k);
+				 areanum = t+ ( 400/(20*k)*(i/k)+(j-i)/(20*k) )*h;
 				     
 			      for (int m=t*hiddenpiece; m<t*(hiddenpiece+1); m++)  {
 			      for (int a=0; a<k; a+=1){
@@ -1361,7 +1361,6 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 weightsum1+=weight1[m][n];
 				      
 
-				 
 				 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 				 
 			    }
@@ -1374,9 +1373,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegsatsum1[areanum] = negsatsum1;
 				    prevposstepcount1[areanum] = posstepcount1;
 				    prevnegstepcount1[areanum] = negstepcount1;
+				     
 				 /* prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
+				     
 				    prevweightsum1[areanum] = weightsum1;
+				     
 				 /* prevzerosigcount1[area] = zerosigcount1; */
 				
 				    
@@ -1385,6 +1387,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 			    }
 				cout<<endl;
+				
+				
 			  // weight HO
 				
 
@@ -1398,7 +1402,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				double possigcount2=0, negsigcount2=0;
 				double zerosigcount2=0;
 				double weightsum2=0;
-				areanum = 400/(20*k)*(20/k) + m*h +t;
+				areanum = (400/(20*k)*(20/k))*h + m*h +t;
 				    
 			     for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
 				  
@@ -1420,9 +1424,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegsatsum2[areanum] = negsatsum2;
 				    prevposstepcount2[areanum] = posstepcount2;
 				    prevnegstepcount2[areanum] = negstepcount2;
+				   
 				 /* prevpossigcount2= possigcount2;
 				    prevnegsigcount2= negsigcount2; */
+				   
 				    prevweightsum2[areanum] = weightsum2;
+				   
 				 /* prevzerosigcount2[area] = zerosigcount2; */
 				    
 
