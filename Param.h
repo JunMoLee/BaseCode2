@@ -138,6 +138,7 @@ public:
 	
 	int selectsim=0;  // select algorithm 
 	bool weighttrack=0;  // track weight & store in files if true
+	int track=0;
 	
 	/* for adaptive learning */ 
 	void ChangeLearningrate(double alph1, double nalph, double dalph, double pdalph);  // adaptive learning rate
