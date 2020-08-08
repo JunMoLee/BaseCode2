@@ -43,11 +43,11 @@ Param::Param() {
 	/* MNIST dataset */
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
-	useLTD=1;
+	useLTD=0;
 	const double
-        l=30;
+        l=20;
 	const double
-	ll=30;
+	ll=20;
 	const double
 	dl=20;
 	const double
@@ -61,6 +61,7 @@ Param::Param() {
 	/* Weight track variables */
 	weighttrack=0;
 	TrackRate=500;
+	track=0;
 	
 	
 	/* Algorithm parameters */
@@ -100,7 +101,7 @@ Param::Param() {
 	learningrate[0][3] = dalpha;
 		
 	learningrate[1][0] = alpha1;
-	learningrate[1][1] = 0.2;
+	learningrate[1][1] = nalpha1;
 	learningrate[1][2] = pdalpha;
 	learningrate[1][3] = dalpha;
 		
@@ -154,7 +155,7 @@ Param::Param() {
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
         const int 
-	frr=1000;
+	frr=5000;
 	RefreshRate = frr;
 	const int 
 	nur=6;
