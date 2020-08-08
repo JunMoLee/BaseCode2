@@ -1325,7 +1325,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			} // end of full-reset code
 			
 		      /* saturation count */
-			
+		if(param-> track==1)	{
 		       if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
 
 
@@ -1450,6 +1450,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			cout <<"weightsum IH: "<<weightsum1<<" weightsum HO:"<<weightsum2;
 			cout <<endl; */
 			} // end of if code
+		} // end of track if code
 		
 		
 				
