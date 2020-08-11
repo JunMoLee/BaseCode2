@@ -112,9 +112,7 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
 
-		       int k=10; // k=kernel size;
-		       int h=2; // h=number of hidden layer slice
-		       int hiddenpiece= param->nHide/h;
+
 				
 /*Optimization functions*/
 double gradt;
