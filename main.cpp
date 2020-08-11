@@ -140,7 +140,7 @@ int main() {
 	        /* open file */ 
 	
 		ofstream read;
-		read.open("SI_200720_PCMhybridrefresh4000.csv", ios_base::app);                                                         
+		read.open("SI_200811_hybridcasecheck.csv", ios_base::app);                                                         
 		vector <double> accuracy (125,0);
 	        
 	        /* define name for sum of accuaracy for every n epochs */ 
