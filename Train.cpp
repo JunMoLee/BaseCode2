@@ -1511,8 +1511,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	char fileHO[4];
 	char nuccase[6];
 	char frrcase[6];
-	sprintf(nuccase,"%d",param->nuc);
-	sprintf(frrcase,"%d",param->frr);
+	sprintf(nuccase,"%d",param->ReverseUpdate);
+	sprintf(frrcase,"%d",param->RefreshRate);
 	
         
 	// define range of conductance for simplicity //
