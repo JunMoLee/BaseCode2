@@ -1509,6 +1509,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	// define name for file & parameters
 	char fileIH[4];
 	char fileHO[4];
+	char nuccase[6];
+	char frrcase[6];
+	sprintf(nuccase,"%d",param->nuc);
+	sprintf(frrcase,"%d",param->frr);
+	
         
 	// define range of conductance for simplicity //
 	double minconGpIH = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->pminConductance;
@@ -1531,8 +1536,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			for (int n=100*i; n<100*(i+1);n++){	
 	        
 	        sprintf(fileIH, "%d", i);
+		
 		string filenameA="weightIH";
 	        filenameA.append(fileIH);
+		filenameA.append(nuccase);
+		filenameA.append(frrcase);
 		ofstream readA;
 		readA.open(filenameA + ".csv",std::ios_base::app);   		
 		readA<<endl;
@@ -1563,6 +1571,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	        sprintf(fileHO, "%d", i);
 		string filenameB="weightHO";
 	        filenameB.append(fileHO);
+		filenameB.append(nuccase);
+		filenameB.append(frrcase);
 		ofstream readB;
 			
 		readB.open(filenameB + ".csv",std::ios_base::app);  			
