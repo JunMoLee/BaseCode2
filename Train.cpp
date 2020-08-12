@@ -1443,10 +1443,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		sprintf(nurcase, "%d",  param->ReverseUpdate);
 		sprintf(frrcase, "%d",  param->RefreshRate);
 		
-		string filenameA="weightHO";
-	        filenameA.append(fileHO);
-		 filenameA.append(nurcase);
-		 filenameA.append(frrcase);
+		string filenameB="weightHO";
+	        filenameB.append(fileHO);
+		 filenameB.append(nurcase);
+		 filenameB.append(frrcase);
 	
 		ofstream readB;
 			
