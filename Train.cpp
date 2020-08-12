@@ -1438,8 +1438,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	        sprintf(fileHO, "%d", i);
 		string filenameB="weightHO";
 	        filenameB.append(fileHO);
-		filenameB.append(nuccase);
-		filenameB.append(frrcase);
+		filenameB.append((char)nuccase);
+		filenameB.append((char)frrcase);
 		ofstream readB;
 			
 		readB.open(filenameB + ".csv",std::ios_base::app);  			
