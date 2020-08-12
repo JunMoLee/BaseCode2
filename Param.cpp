@@ -43,7 +43,7 @@ Param::Param() {
 	/* MNIST dataset */
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
-	useLTD=0;
+	useLTD=1;
 	const double
         l=30;
 	const double
