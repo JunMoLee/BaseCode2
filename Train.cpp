@@ -1377,10 +1377,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	/* track weights */
 	
 	// define name for file & parameters
-		char fileIH[1];
-		char fileHO[1];
-                char nurcase [1];
-		char frrcase [5];
+		char fileIH[5];
+		char fileHO[5];
+                char nurcase [6];
+		char frrcase [6];
 
         
 	// define range of conductance for simplicity //
