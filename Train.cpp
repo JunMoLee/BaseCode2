@@ -1377,6 +1377,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	/* track weights */
 	
 	// define name for file & parameters
+		char fileIH[1];
+		char fileHO[1];
                 char nurcase [1];
 		char frrcase [5];
 
