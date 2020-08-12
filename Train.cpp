@@ -1377,12 +1377,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	/* track weights */
 	
 	// define name for file & parameters
-	char fileIH[4];
-	char fileHO[4];
-	char nuccase[6];
-	char frrcase[6];
-	sprintf(nuccase,"%d",param->ReverseUpdate);
-	sprintf(frrcase,"%d",param->RefreshRate);
+
+		int nuccase = param->ReverseUpdate;
+		int frrcase=param->param->RefreshRate;
 	
         
 	// define range of conductance for simplicity //
