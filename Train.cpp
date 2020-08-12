@@ -1378,8 +1378,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
 	// define name for file & parameters
 
-		int nuccase = param->ReverseUpdate;
-		int frrcase=param->param->RefreshRate;
+		char nuccase = param->ReverseUpdate;
+		char frrcase=param->param->RefreshRate;
 	
         
 	// define range of conductance for simplicity //
@@ -1406,8 +1406,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		
 		string filenameA="weightIH";
 	        filenameA.append(fileIH);
-		filenameA.append((char)nuccase);
-		filenameA.append((char)frrcase);
+		filenameA.append(nuccase);
+		filenameA.append(frrcase);
 		ofstream readA;
 		readA.open(filenameA + ".csv",std::ios_base::app);   		
 		readA<<endl;
@@ -1438,8 +1438,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	        sprintf(fileHO, "%d", i);
 		string filenameB="weightHO";
 	        filenameB.append(fileHO);
-		filenameB.append((char)nuccase);
-		filenameB.append((char)frrcase);
+		filenameB.append(nuccase);
+		filenameB.append(frrcase);
 		ofstream readB;
 			
 		readB.open(filenameB + ".csv",std::ios_base::app);  			
