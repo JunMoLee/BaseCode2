@@ -1527,7 +1527,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			/*healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance)/(weight1[m][n]);
 		        else
 			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance)/(weight1[m][n]); */
-			healthyfactorIH +=(1-(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance))/(1-(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance));	
+			healthyfactorIH +=(1-(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance));	
 			}
 			}
 			}
@@ -1539,7 +1539,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			/*healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nmaxConductance)/(weight2[m][n]);
 		        else
 			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance)/(weight2[m][n]);*/
-			healthyfactorHO +=(1-(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nmaxConductance))/(1-(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance));	
+			healthyfactorHO +=(1-(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance));	
 			}
 			}
 			}
