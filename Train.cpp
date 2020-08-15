@@ -1491,6 +1491,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        else
 			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance)/(1-weight1[m][n]);
 			}
+			}
 			
 			for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){
@@ -1498,6 +1499,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance)/(1-weight2[m][n]);
 		        else
 			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nmaxConductance)/(1-weight2[m][n]);
+			}
 			}
 				
 		cout<<"averagehealtyfactor IH : "<<healthyfactorIH/(param->nHide*param->nInput)<<endl;
