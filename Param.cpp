@@ -65,7 +65,7 @@ Param::Param() {
 	
 	
 	/* Algorithm parameters */
-	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
+	numTrainImagesPerEpoch = 1998;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
@@ -155,7 +155,7 @@ Param::Param() {
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
         const int 
-	frr=50;
+	frr=1000;
 	RefreshRate = frr;
 	const int 
 	nur=6;
