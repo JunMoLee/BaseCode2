@@ -1486,19 +1486,23 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	// healthy weight, healthy factor
 			for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
+			if ((weight1[m][n]!=1)&&(weight1[m][n]!=-1)){
 			if(weight1[m][n]>=0)
 			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance)/(1-weight1[m][n]);
 		        else
 			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance)/(1-weight1[m][n]);
 			}
 			}
+			}
 			
 			for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){
+			if ((weight2[m][n]!=1)&&(weight2[m][n]!=-1)){
 			if(weight2[m][n]>=0)
 			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance)/(1-weight2[m][n]);
 		        else
 			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nmaxConductance)/(1-weight2[m][n]);
+			}
 			}
 			}
 				
