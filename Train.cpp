@@ -1524,7 +1524,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			for (int n=0; n<param->nInput;n++){
 			if ((weight1[m][n]!=1)&&(weight1[m][n]!=-1)){
 			if(weight1[m][n]>0)
-			healthyfactorIH += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance)/(weight1[m][n]);
+			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance)/(weight1[m][n]);
 		        else
 			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance)/(weight1[m][n]);
 			}
