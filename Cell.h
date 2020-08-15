@@ -117,6 +117,7 @@ public:
 	int negstep=0;
 	
 	/* polarity tracker */
+	int previouspolarity=0;
 	int polaritychange=0;
 };
 
