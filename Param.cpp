@@ -176,7 +176,7 @@ param_gn=-9;
 break;
 case 1:
 param_gp=1;
-param_gn=-3;
+param_gn=-5;
 break;
 case 2:
 param_gp=1;
