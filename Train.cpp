@@ -1494,11 +1494,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 		cout<<"polaritychange"<<" "<<"IH : "<<polaritychangecountIH<<" HO : "<<polaritychangecountHO<<endl;
 		cout<<"momentum prediction"<<" "<<"IH : "<<positiveweightmomentumIH/positiveweightIH<<", "<<negativeweightmomentumIH/negativeweightIH<<", "<<zeroweightmomentumIH/zeroweightIH<<endl;
-		cout<<"saturation prediction"<<" "<<"IH : "<<possatIH/possatIH2<<", "<<negsatIH/negsatIH2<<", "<<zerosatIH/zerosatIH2<<endl;
+		cout<<"saturation prediction"<<" "<<"IH : "<<possatIH/(possatIH+possatIH2)<<", "<<negsatIH/(negsatIH+negsatIH2)<<", "<<zerosatIH/(zerosatIH+zerosatIH2)<<endl;
 
 		
 		cout<<"momentum prediction"<<" "<<"HO : "<<positiveweightmomentumHO/positiveweightHO<<", "<<negativeweightmomentumHO/negativeweightHO<<", "<<zeroweightmomentumHO/zeroweightHO<<endl;
-		cout<<"saturation prediction"<<" "<<"HO : "<<possatHO/possatHO2<<", "<<negsatHO/negsatHO2<<", "<<zerosatHO/zerosatHO2<<endl;
+		cout<<"saturation prediction"<<" "<<"HO : "<<possatHO/(possatHO+possatHO2)<<", "<<negsatHO/(negsatHO+negsatHO2)<<", "<<zerosatHO/(zerosatHO+zerosatHO2)<<endl;
 						      
 	
 	// healthy weight, healthy factor
