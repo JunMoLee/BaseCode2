@@ -88,7 +88,7 @@ void WeightToConductance() {
     for (int col=0; col<param->nHide; col++) {
         for (int row=0; row<param->nInput; row++) {
             arrayIH->WriteCell(col, row, weight1[col][row], weight1[col][row], param->maxWeight, param->minWeight, false);
-	    if(weight1[m][n]>0) 
+	    if(weight1[col][row]>0) 
 				static_cast<AnalogNVM*>(arrayIH->cell[col][row])->previouspolarity=1;
 				else if (weight1[col][row]<0) 
 				static_cast<AnalogNVM*>(arrayIH->cell[col][row])->previouspolarity=-1;
@@ -102,7 +102,7 @@ void WeightToConductance() {
     for (int col=0; col<param->nOutput; col++) {
         for (int row=0; row<param->nHide; row++) {
             arrayHO->WriteCell(col, row, weight2[col][row], weight2[col][row], param->maxWeight, param->minWeight, false);
-		if(weight2[m][n]>0) 
+		if(weight2[col][row]>0) 
 				static_cast<AnalogNVM*>(arrayHO->cell[col][row])->previouspolarity=1;
 				else if (weight2[col][row]<0) 
 				static_cast<AnalogNVM*>(arrayHO->cell[col][row])->previouspolarity=-1;
