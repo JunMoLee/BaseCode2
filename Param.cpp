@@ -155,7 +155,7 @@ Param::Param() {
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
         const int 
-	frr=100000;
+	frr=7000;
 	RefreshRate = frr;
 	const int 
 	nur=6;
