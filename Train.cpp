@@ -1375,7 +1375,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
         /* weight infromation tracking */
 	// deltaweight, polarity stabilization, momentum existence confirmation 
-	double positiveweightmomentumIH1=0;
+	double positiveweightmomentumIH=0;
 	double negativeweightmomentumIH=0;
 	double zeroweightmomentumIH=0;
 	double positiveweightIH=0;
