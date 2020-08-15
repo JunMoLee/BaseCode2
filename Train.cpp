@@ -1375,11 +1375,133 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
         /* weight infromation tracking */
 	// deltaweight, polarity stabilization, momentum existence confirmation 
-	
+	double positiveweightmomentumIH=0;
+	double negativeweightmomentumIH=0;
+	double zeroweightmomentumIH=0;
+	double positiveweightIH=0;
+	double negativeweightIH=0;
+	double zeroweightIH=0;
+	double polaritychangecountIH=0;
+	double possatIH=0;
+	double negsatIH=0;
+	double zerosatIH=0;
+	double positiveweightmomentumHO=0;
+	double negativeweightmomentumHO=0;
+	double zeroweightmomentumHO=0;
+	double positiveweightHO=0;
+	double negativeweightHO=0;
+	double zeroweightHO=0;
+	double polaritychangecountHO=0;
+	double possatHO=0;
+	double negsatHO=0;
+	double zerosatHO=0;
+	double healthyfactorIH=0;
+	double healthyfactorHO=0;
+		for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){	
+				// count polarity change
+				polaritychangecountIH += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->polaritychange;
+				// set polarity to count in next epoch
+				if(weight1[m][n]>0) 
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity=1;
+				else if (weight1[m][n]<0) 
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity=-1;
+				else
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity=0;
+				
+				if (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity==1) 
+				{positiveweightIH++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep>static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep)
+			         positiveweightmomentumIH++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
+				 possatIH++;
+				}
+				else if (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity==-1) 
+				{negativeweightIH++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep)
+			         negativeweightmomentumIH++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
+				 negsatIH++;
+				}
+				else 
+				{
+				zeroweightIH++;
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep>static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep)
+			         zeroweightmomentumIH++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
+				 zerosatIH++;	
+				}
+				
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
+			}
+		}
+		
+		for (int m=0; m<param->nOutput; m++) {
+			for (int n=0; n<param->nHide;n++){	
+				// count polarity change
+				polaritychangecountHO += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->polaritychange;
+				// set polarity to count in next epoch
+				if(weight2[m][n]>0) 
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity=1;
+				else if (weight2[m][n]<0) 
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity=-1;
+				else
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity=0;
+				
+				if (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity==1) 
+				{positiveweightHO++;
+				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep>static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep)
+			         positiveweightmomentumHO++;
+				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
+				 possatHO++;
+				}
+				else if (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity==-1) 
+				{negativeweightHO++;
+				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep)
+			         negativeweightmomentumHO++;
+				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
+				 negsatHO++;
+				}
+				else 
+				{
+				zeroweightHO++;
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep>static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep)
+			         zeroweightmomentumIH++;
+				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
+				 zerosatHO++;	
+				}
+			}
+		}
+		
+
+		cout<<"polaritychange"<<" "<<"IH : "<<polaritychangecountIH<<" HO : "<<polaritychangecountHO<<endl;
+		cout<<"momentum prediction"<<" "<<"IH : "<<positiveweightmomentumIH/positiveweightIH<<", "<<negativeweightmomentumIH/negativeweightIH<<", "<<zeroweightmomentumIH/zeroweightIH<<endl;
+		cout<<"saturation prediction"<<" "<<"IH : "<<possatIH/positiveweightIH<<", "<<negsatIH/negativeweightIH<<", "<<zerosatIH/zeroweightIH<<endl;
+
+		
+		cout<<"momentum prediction"<<" "<<"HO : "<<positiveweightmomentumHO/positiveweightHO<<", "<<negativeweightmomentumHO/negativeweightHO<<", "<<zeroweightmomentumHO/zeroweightHO<<endl;
+		cout<<"saturation prediction"<<" "<<"HO : "<<possatHO/positiveweightHO<<", "<<negsatHO/negativeweightHO<<", "<<zerosatHO/zeroweightHO<<endl;
+						      
 	
 	// healthy weight, healthy factor
-		
-		
+			for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){
+			if(weight1[m][n]>=0)
+			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance)/(1-weight1[m][n]);
+		        else
+			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance)/(1-weight1[m][n]);
+			}
+			
+			for (int m=0; m<param->nOutput; m++) {
+			for (int n=0; n<param->nHide;n++){
+			if(weight2[m][n]>=0)
+			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance)/(1-weight2[m][n]);
+		        else
+			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nmaxConductance)/(1-weight2[m][n]);
+			}
+				
+		cout<<"averagehealtyfactor IH : "<<healthyfactorIH/(param->nHide*param->nInput)<<endl;
+		cout<<"averagehealtyfactor HO : "<<healthyfactorHO/(param->nHide*param->nOutput)<<endl;
 	/* track weights */
 	
 	// define name for file & parameters
