@@ -115,6 +115,9 @@ public:
 	/* track average step update */
 	int posstep=0;
 	int negstep=0;
+	
+	/* polarity tracker */
+	int polaritychange=0;
 };
 
 class SRAM: public Cell {
