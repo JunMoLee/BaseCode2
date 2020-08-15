@@ -1375,7 +1375,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
         /* weight infromation tracking */
 	// deltaweight, polarity stabilization, momentum existence confirmation 
-	double positiveweightmomentumIH=0;
+	double positiveweightmomentumIH1=0;
 	double negativeweightmomentumIH=0;
 	double zeroweightmomentumIH=0;
 	double positiveweightIH=0;
@@ -1383,8 +1383,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	double zeroweightIH=0;
 	double polaritychangecountIH=0;
 	double possatIH=0;
+		double possatIH2=0;
 	double negsatIH=0;
+		double negsatIH2=0;
 	double zerosatIH=0;
+			double zerosatIH2=0;
 	double positiveweightmomentumHO=0;
 	double negativeweightmomentumHO=0;
 	double zeroweightmomentumHO=0;
@@ -1393,8 +1396,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	double zeroweightHO=0;
 	double polaritychangecountHO=0;
 	double possatHO=0;
+			double possatHO2=0;
 	double negsatHO=0;
+			double negsatHO2=0;
 	double zerosatHO=0;
+			double zerosatHO2=0;
 	double healthyfactorIH=0;
 	double healthyfactorHO=0;
 		for (int m=0; m<param->nHide; m++) {
@@ -1415,6 +1421,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			         positiveweightmomentumIH++;
 				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
 				 possatIH++;
+				 	 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
+				 possatIH2++;
 				}
 				else if (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity==-1) 
 				{negativeweightIH++;
@@ -1422,6 +1430,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			         negativeweightmomentumIH++;
 				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
 				 negsatIH++;
+				  if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
+				 negsatIH2++;
 				}
 				else 
 				{
@@ -1430,6 +1440,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			         zeroweightmomentumIH++;
 				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
 				 zerosatIH++;	
+						 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat)
+				 zerosatIH2++;	
 				}
 				
 				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
@@ -1454,6 +1466,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			         positiveweightmomentumHO++;
 				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
 				 possatHO++;
+				  if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
+				 possatHO2++;
 				}
 				else if (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity==-1) 
 				{negativeweightHO++;
@@ -1461,6 +1475,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			         negativeweightmomentumHO++;
 				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
 				 negsatHO++;
+				  if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
+				 negsatHO2++;
 				}
 				else 
 				{
@@ -1469,6 +1485,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			         zeroweightmomentumIH++;
 				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat>static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
 				 zerosatHO++;	
+					 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat)
+				 zerosatHO2++;	
 				}
 			}
 		}
@@ -1476,11 +1494,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 		cout<<"polaritychange"<<" "<<"IH : "<<polaritychangecountIH<<" HO : "<<polaritychangecountHO<<endl;
 		cout<<"momentum prediction"<<" "<<"IH : "<<positiveweightmomentumIH/positiveweightIH<<", "<<negativeweightmomentumIH/negativeweightIH<<", "<<zeroweightmomentumIH/zeroweightIH<<endl;
-		cout<<"saturation prediction"<<" "<<"IH : "<<possatIH/positiveweightIH<<", "<<negsatIH/negativeweightIH<<", "<<zerosatIH/zeroweightIH<<endl;
+		cout<<"saturation prediction"<<" "<<"IH : "<<possatIH/possatIH2<<", "<<negsatIH/negsatIH2<<", "<<zerosatIH/zerosatIH2<<endl;
 
 		
 		cout<<"momentum prediction"<<" "<<"HO : "<<positiveweightmomentumHO/positiveweightHO<<", "<<negativeweightmomentumHO/negativeweightHO<<", "<<zeroweightmomentumHO/zeroweightHO<<endl;
-		cout<<"saturation prediction"<<" "<<"HO : "<<possatHO/positiveweightHO<<", "<<negsatHO/negativeweightHO<<", "<<zerosatHO/zeroweightHO<<endl;
+		cout<<"saturation prediction"<<" "<<"HO : "<<possatHO/possatHO2<<", "<<negsatHO/negsatHO2<<", "<<zerosatHO/zerosatHO2<<endl;
 						      
 	
 	// healthy weight, healthy factor
