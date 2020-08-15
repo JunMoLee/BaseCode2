@@ -49,9 +49,9 @@ Param::Param() {
 	const double
 	ll=30;
 	const double
-	dl=20;
+	dl=30;
 	const double
-	pdl=15;
+	pdl=30;
 	const double
 	rdl=10;
 	const double
@@ -59,7 +59,7 @@ Param::Param() {
 	selectsim=ss;
 	
 	/* Weight track variables */
-	weighttrack=1;
+	weighttrack=0;
 	TrackRate=500;
 	track=0;
 	
@@ -127,10 +127,10 @@ Param::Param() {
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
 	const int
-	nuc=0;
+	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=1;
+        frc=0;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -158,7 +158,7 @@ Param::Param() {
 	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=6;
+	nur=2;
 	const int 
 	rnur=1;
 	const int
@@ -166,7 +166,7 @@ Param::Param() {
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=0;
+a=1;
 	
 
 switch(a){
