@@ -1409,6 +1409,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			double zerosatHO2=0;
 	double healthyfactorIH=0;
 	double healthyfactorHO=0;
+	int healthycounterIH=0;
+	int healthycounterHO=0;
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
 				// count polarity change
@@ -1524,10 +1526,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			for (int n=0; n<param->nInput;n++){
 			if ((weight1[m][n]!=1)&&(weight1[m][n]!=-1)){
 			if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp>8)
+			{healthycounterIH++;
 			/*healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance)/(weight1[m][n]);
 		        else
 			healthyfactorIH += (1-static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance)/(weight1[m][n]); */
-			healthyfactorIH +=(1-(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance));	
+			healthyfactorIH +=(1-(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance));	}
 			}
 			}
 			}
@@ -1536,16 +1539,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			for (int n=0; n<param->nHide;n++){
 			if ((weight2[m][n]!=1)&&(weight2[m][n]!=-1)){
 			if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp>8)
+			{healthycounterHO++;
 			/*healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nmaxConductance)/(weight2[m][n]);
 		        else
 			healthyfactorHO += (1-static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance)/(weight2[m][n]);*/
-			healthyfactorHO +=(1-(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance));	
+			healthyfactorHO +=(1-(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance));}	
 			}
 			}
 			}
 				
-		cout<<"averagehealtyfactor IH : "<<healthyfactorIH/(param->nHide*param->nInput)<<endl;
-		cout<<"averagehealtyfactor HO : "<<healthyfactorHO/(param->nHide*param->nOutput)<<endl;
+		cout<<"averagehealtyfactor IH : "<<healthyfactorIH/healthycounterIH<<endl;
+		cout<<"averagehealtyfactor HO : "<<healthyfactorHO/healthycounterHO<<endl;
 	/* track weights */
 	
 	// define name for file & parameters
