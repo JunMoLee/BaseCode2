@@ -1552,7 +1552,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		cout<<"averagehealtyfactor HO : "<<healthyfactorHO/healthycounterHO<<endl;
 		
 	// weight analyzer 
-/*		double GpIH1=0;
+	double GpIH1=0;
 		double GpIH2=0;
 		double GpIH3=0;
 		double GpIH4=0;
@@ -1589,29 +1589,29 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			for (int n=0; n<param->nInput;n++){
 				
 					if((0<=weight1[m][n])&&(weight1[m][n]<0.2)) 
-					{GpIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
-					 GnIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
-					 totalIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					{GpIH1 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer());
+					 GnIH1 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+1);
+					 totalIH1 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+2); 
 					}
 					else if((0.2<=weight1[m][n])&&(weight1[m][n]<0.4))
-					{GpIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
-					 GnIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
-					 totalIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					{GpIH2 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer());
+					 GnIH2 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+1);
+					 totalIH2 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+2); 
 					}
 					else if ((0.4<=weight1[m][n])&&(weight1[m][n]<0.6))
-					{GpIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
-					 GnIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
-					 totalIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					{GpIH3 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer());
+					 GnIH3 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+1);
+					 totalIH3 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+2); 
 					}
 					else if ((0.6<=weight1[m][n])&&(weight1[m][n]<0.8))
-					{GpIH4 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
-					 GnIH4 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
-					 totalIH4 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					{GpIH4 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer());
+					 GnIH4 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+1);
+					 totalIH4 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+2); 
 					}
 					else
-					{GpIH5 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
-					 GnIH5 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
-					 totalIH5 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					{GpIH5 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer());
+					 GnIH5 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+1);
+					 totalIH5 += *(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()+2); 
 					}
 				}
 			}
@@ -1620,32 +1620,32 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		 for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){
 				if((0<=weight2[m][n])&&(weight2[m][n]<0.2)) 
-					{GpHO1 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
-					 GnHO1 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
-					 totalHO1 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					{GpHO1 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer());
+					 GnHO1 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+1);
+					 totalHO1 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+2); 
 					}
 					else if((0.2<=weight2[m][n])&&(weight2[m][n]<0.4))
-					{GpHO2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
-					 GnHO2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
-					 totalHO2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					{GpHO2 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer());
+					 GnHO2 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+1);
+					 totalHO2 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+2); 
 					}
 					else if ((0.4<=weight2[m][n])&&(weight2[m][n]<0.6))
-					{GpHO3 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
-					 GnHO3 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
-					 totalHO3 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					{GpHO3 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer());
+					 GnHO3 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+1);
+					 totalHO3 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+2); 
 					}
 					else if ((0.6<=weight2[m][n])&&(weight2[m][n]<0.8))
-					{GpHO4 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
-					 GnHO4 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
-					 totalHO4 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					{GpHO4 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer());
+					 GnHO4 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+1);
+					 totalHO4 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+2); 
 					}
 					else
-					{GpHO5 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
-					 GnHO5 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
-					 totalHO5 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					{GpHO5 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer());
+					 GnHO5 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+1);
+					 totalHO5 += *(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()+2); 
 					}
 			}
-						}
+		}
 		
 	
 		cout<<"0~0.2"<<" : "<<"IH "<<GpIH1/IHsize<<", "<<GnIH1/IHsize<<", "<<totalIH1/IHsize<<" HO "<<GpHO1/HOsize<<", "<<GnHO1/HOsize<<", "<<totalHO1/HOsize<<endl;
@@ -1653,7 +1653,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		cout<<"0.4~0.6"<<" : "<<"IH "<<GpIH3/IHsize<<", "<<GnIH3/IHsize<<", "<<totalIH3/IHsize<<" HO "<<GpHO3/HOsize<<", "<<GnHO3/HOsize<<", "<<totalHO3/HOsize<<endl;
 		cout<<"0.6~0.8"<<" : "<<"IH "<<GpIH4/IHsize<<", "<<GnIH4/IHsize<<", "<<totalIH4/IHsize<<" HO "<<GpHO4/HOsize<<", "<<GnHO4/HOsize<<", "<<totalHO4/HOsize<<endl;
 		cout<<"0.8~1"<<" : "<<"IH "<<GpIH5/IHsize<<", "<<GnIH5/IHsize<<", "<<totalIH5/IHsize<<" HO "<<GpHO5/HOsize<<", "<<GnHO5/HOsize<<", "<<totalHO5/HOsize<<endl;
-*/		
+	
 	/* track weights */
 	
 	// define name for file & parameters
