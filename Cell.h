@@ -119,6 +119,9 @@ public:
 	/* polarity tracker */
 	int previouspolarity=0;
 	int polaritychange=0;
+	
+	/* cell specifier */
+	int cellspecifier
 };
 
 class SRAM: public Cell {
