@@ -1588,8 +1588,19 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double totalHO4=0;
 		double totalHO5=0;
 		double totalHO6=0;
-		double IHsize = param->nInput * param->nHide;
-		double HOsize = param->nHide * param->nOutput;
+	double countIH1=0;
+	double countIH2=0;
+		double countIH3=0;
+			double countIH4=0;
+			double countIH5=0;
+			double countIH6=0;
+			double countHO1=0;
+			double countHO2=0;	
+		double countHO3=0;
+			double countHO4=0;
+			double countHO5=0;
+		double countHO6=0;
+	
 		
 		 for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
@@ -1598,31 +1609,37 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					{GpIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
 					 GnIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					 countIH1++;
 					}
 					else if((-0.66666<=weight1[m][n])&&(weight1[m][n]<-0.33333))
 					{GpIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
 					 GnIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					 countIH2++;
 					}
 					else if ((0.33333<=weight1[m][n])&&(weight1[m][n]<0))
 					{GpIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
 					 GnIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					 countIH3++;
 					}
 					else if ((0<=weight1[m][n])&&(weight1[m][n]<0.33333))
 					{GpIH4 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
 					 GnIH4 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH4 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					 countIH4++;
 					}
 					else if ((0.33333<=weight1[m][n])&&(weight1[m][n]<0.66666))
 					{GpIH5 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
 					 GnIH5 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH5 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					 countIH5++;
 					}
 					else 
 					{GpIH6 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
 					 GnIH6 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH6 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
+					 countIH6++;
 					}
 				}
 			}
@@ -1634,42 +1651,48 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					{GpHO1 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
 					 GnHO1 +=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
 					 totalHO1 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					 countHO1++;
 					}
 					else if((-0.66666<=weight2[m][n])&&(weight2[m][n]<-0.33333))
 					{GpHO2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
 					 GnHO2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
 					 totalHO2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					  countHO2++;
 					}
 					else if ((-0.33333<=weight2[m][n])&&(weight2[m][n]<0))
 					{GpHO3 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
 					 GnHO3 +=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
 					 totalHO3 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					  countHO3++;
 					}
 					else if ((0<=weight2[m][n])&&(weight2[m][n]<0.33333))
 					{GpHO4 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
 					 GnHO4 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
 					 totalHO4 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					  countHO4++;
 					}
 					else if ((0.33333<=weight2[m][n])&&(weight2[m][n]<0.66666))
 					{GpHO5 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
 					 GnHO5 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
 					 totalHO5 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					  countHO5++;
 					}
 					else 
 					{GpHO6 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0];
 					 GnHO6 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1];
 					 totalHO6 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]; 
+					  countHO6++;
 					}
 			}
 		}
 		
 	
-		cout<<"-1~-0.66666"<<" : "<<"IH "<<GpIH1/IHsize<<", "<<GnIH1/IHsize<<", "<<totalIH1/IHsize<<" HO "<<GpHO1/HOsize<<", "<<GnHO1/HOsize<<", "<<totalHO1/HOsize<<endl;
-		cout<<"-0.66666~-0.33333"<<" : "<<"IH "<<GpIH2/IHsize<<", "<<GnIH2/IHsize<<", "<<totalIH2/IHsize<<" HO "<<GpHO2/HOsize<<", "<<GnHO2/HOsize<<", "<<totalHO2/HOsize<<endl;
-		cout<<"-0.33333~0"<<" : "<<"IH "<<GpIH3/IHsize<<", "<<GnIH3/IHsize<<", "<<totalIH3/IHsize<<" HO "<<GpHO3/HOsize<<", "<<GnHO3/HOsize<<", "<<totalHO3/HOsize<<endl;
-		cout<<"0~0.33333"<<" : "<<"IH "<<GpIH4/IHsize<<", "<<GnIH4/IHsize<<", "<<totalIH4/IHsize<<" HO "<<GpHO4/HOsize<<", "<<GnHO4/HOsize<<", "<<totalHO4/HOsize<<endl;
-		cout<<"0.33333~0.66666"<<" : "<<"IH "<<GpIH5/IHsize<<", "<<GnIH5/IHsize<<", "<<totalIH5/IHsize<<" HO "<<GpHO5/HOsize<<", "<<GnHO5/HOsize<<", "<<totalHO5/HOsize<<endl;
-		cout<<"0.66666~1"<<" : "<<"IH "<<GpIH6/IHsize<<", "<<GnIH6/IHsize<<", "<<totalIH6/IHsize<<" HO "<<GpHO6/HOsize<<", "<<GnHO6/HOsize<<", "<<totalHO6/HOsize<<endl;
+		cout<<"-1~-0.66666"<<" : "<<"IH "<<GpIH1/countIH1<<", "<<GnIH1/countIH1<<", "<<totalIH1/countIH1<<" HO "<<GpHO1/countHO1<<", "<<GnHO1/countHO1<<", "<<totalHO1/countHO1<<endl;
+		cout<<"-0.66666~-0.33333"<<" : "<<"IH "<<GpIH2/countIH2<<", "<<GnIH2/countIH2<<", "<<totalIH2/countIH2<<" HO "<<GpHO2/countHO2<<", "<<GnHO2/countHO2<<", "<<totalHO2/countHO2<<endl;
+		cout<<"-0.33333~0"<<" : "<<"IH "<<GpIH3/countIH3<<", "<<GnIH3/countIH3<<", "<<totalIH3/countIH3<<" HO "<<GpHO3/countHO3<<", "<<GnHO3/countHO3<<", "<<totalHO3/countHO3<<endl;
+		cout<<"0~0.33333"<<" : "<<"IH "<<GpIH4/countIH4<<", "<<GnIH4/countIH4<<", "<<totalIH4/countIH4<<" HO "<<GpHO4/countHO4<<", "<<GnHO4/countHO4<<", "<<totalHO4/countHO4<<endl;
+		cout<<"0.33333~0.66666"<<" : "<<"IH "<<GpIH5/countIH5<<", "<<GnIH5/countIH5<<", "<<totalIH5/countIH5<<" HO "<<GpHO5/countHO5<<", "<<GnHO5/countHO5<<", "<<totalHO5/countHO5<<endl;
+		cout<<"0.66666~1"<<" : "<<"IH "<<GpIH6/countIH6<<", "<<GnIH6/countIH6<<", "<<totalIH6/countIH6<<" HO "<<GpHO6/countHO6<<", "<<GnHO6/countHO6<<", "<<totalHO6/countHO6<<endl;
 	
 	/* track weights */
 	
