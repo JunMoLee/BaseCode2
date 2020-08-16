@@ -62,7 +62,8 @@ Param::Param() {
 	weighttrack=0;
 	TrackRate=500;
 	track=0;
-	
+	Gth1=2;
+	Gth2=8;
 	
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 1998;	// # of training images per epoch
