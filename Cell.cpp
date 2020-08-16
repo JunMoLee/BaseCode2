@@ -286,7 +286,7 @@ std::vector<double> eNVM::weightanalyzer(){
 	else if ((conductanceGn>=Gth1) && (conductanceGn<Gth2)) Gnlocationnumber = 2;
 	else Gnlocationnumber = 3;
 	
-	std::vector<double> conductanceareapair; 
+	std::vector<double> conductancelocationpair; 
 	conductancelocationpair.push_back(Gplocationnumber);
 	conductancelocationpair.push_back(Gnlocationnumber);
 	conductancelocationpair.push_back(Gplocationnumber+Gnlocationnumber);
