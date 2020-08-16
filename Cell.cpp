@@ -274,7 +274,7 @@ polaritychange=0;
 
 double* eNVM::weightanalyzer(){
 	int Gplocationnumber;
-	int Gnlocatinonumber;
+	int Gnlocationnumber;
 	double Gth1 = param -> Gth1;
 	double Gth2 = param -> Gth2;
 	
@@ -287,7 +287,7 @@ double* eNVM::weightanalyzer(){
 	else Gnlocationnumber = 3;
 	
 	double conductanceareapair [3] = {Gplocationnumber, Gnlocationnumber, Gplocationnumber+Gnlocationnumber}
-	return conductanceareapair [3];
+	return conductanceareapair;
 }
 
 /* Real Device */
@@ -533,7 +533,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		negcellspecifier=0;
 		saturatingnegstep++;
 		negsatcounter++;
-		totalsaturatingnegstep +=saturatinnegstep;
+		totalsaturatingnegstep +=saturatingnegstep;
 		conductanceNewGn = nmaxConductance;
 	}
 	else if (conductanceNewGn < nminConductance) {
@@ -727,7 +727,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		negcellspecifier=0;
 		saturatingnegstep++;
 		negsatcounter++;
-		totalsaturatingnegstep +=saturatinnegstep;
+		totalsaturatingnegstep +=saturatingnegstep;
 		conductanceNewGn = nmaxConductance;
 	}
 	else if (conductanceNewGn < nminConductance) {
