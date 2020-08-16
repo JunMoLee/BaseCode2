@@ -1552,7 +1552,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		cout<<"averagehealtyfactor HO : "<<healthyfactorHO/healthycounterHO<<endl;
 		
 	// weight analyzer 
-		double GpIH1=0;
+/*		double GpIH1=0;
 		double GpIH2=0;
 		double GpIH3=0;
 		double GpIH4=0;
@@ -1653,7 +1653,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		cout<<"0.4~0.6"<<" : "<<"IH "<<GpIH3/IHsize<<", "<<GnIH3/IHsize<<", "<<totalIH3/IHsize<<" HO "<<GpHO3/HOsize<<", "<<GnHO3/HOsize<<", "<<totalHO3/HOsize<<endl;
 		cout<<"0.6~0.8"<<" : "<<"IH "<<GpIH4/IHsize<<", "<<GnIH4/IHsize<<", "<<totalIH4/IHsize<<" HO "<<GpHO4/HOsize<<", "<<GnHO4/HOsize<<", "<<totalHO4/HOsize<<endl;
 		cout<<"0.8~1"<<" : "<<"IH "<<GpIH5/IHsize<<", "<<GnIH5/IHsize<<", "<<totalIH5/IHsize<<" HO "<<GpHO5/HOsize<<", "<<GnHO5/HOsize<<", "<<totalHO5/HOsize<<endl;
-		
+*/		
 	/* track weights */
 	
 	// define name for file & parameters
