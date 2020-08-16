@@ -128,6 +128,8 @@ public:
 	int totalsaturatingnegstep=0;
 	int possatcounter=0;
 	int negsatcounter=0;
+	
+	double [] weightanalyzer();
 };
 
 class SRAM: public Cell {
