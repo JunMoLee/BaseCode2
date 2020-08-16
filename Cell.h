@@ -130,7 +130,7 @@ public:
 	int possatcounter=0;
 	int negsatcounter=0;
 	
-        vector<double>  weightanalyzer();
+        std::vector<double>  weightanalyzer();
 };
 
 class SRAM: public Cell {
