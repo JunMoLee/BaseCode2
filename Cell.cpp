@@ -271,7 +271,8 @@ negstep=0;
 polaritychange=0;
 	
 }
-vector<double> eNVM::weightanalyzer(){
+
+std::vector<double> eNVM::weightanalyzer(){
 	int Gplocationnumber;
 	int Gnlocationnumber;
 	double Gth1 = param -> Gth1;
