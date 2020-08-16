@@ -272,7 +272,7 @@ polaritychange=0;
 	
 }
 
-double [] eNVM::weightanalyzer(){
+double* eNVM::weightanalyzer(){
 	int Gplocationnumber;
 	int Gnlocatinonumber;
 	double Gth1 = param -> Gth1;
