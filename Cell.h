@@ -126,6 +126,8 @@ public:
 	int saturatingnegstep=0;
 	int totalsaturatingposstep=0;
 	int totalsaturatingnegstep=0;
+	int possatcounter=0;
+	int negsatcounter=0;
 };
 
 class SRAM: public Cell {
