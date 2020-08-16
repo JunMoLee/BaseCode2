@@ -121,7 +121,8 @@ public:
 	int polaritychange=0;
 	
 	/* cell specifier */
-	int cellspecifier;
+	int poscellspecifier;
+	int negcellspecifier;
 	int saturatingposstep=0;
 	int saturatingnegstep=0;
 	int totalsaturatingposstep=0;
