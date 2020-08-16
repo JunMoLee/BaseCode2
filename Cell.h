@@ -129,7 +129,7 @@ public:
 	int possatcounter=0;
 	int negsatcounter=0;
 	
-	[] double  weightanalyzer();
+        double*  weightanalyzer();
 };
 
 class SRAM: public Cell {
