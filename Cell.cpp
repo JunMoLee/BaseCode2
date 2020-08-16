@@ -277,12 +277,15 @@ double* eNVM::weightanalyzer(){
 	int Gnlocatinonumber;
 	double Gth1 = param -> Gth1;
 	double Gth2 = param -> Gth2;
+	
 	if((conductanceGp>=0) && (conductanceGp<Gth1)) Gplocationnumber = 1;
-	else if (conductanceGp>=Gth1) && (conductanceGp<Gth2)) Gplocationnumber = 2;
+	else if ((conductanceGp>=Gth1) && (conductanceGp<Gth2)) Gplocationnumber = 2;
 	else Gplocationnumber = 3;
+	
 	if((conductanceGn>=0) && (conductanceGn<Gth1)) Gnlocationnumber = 1;
-	else if (conductanceGn>=Gth1) && (conductanceGn<Gth2)) Gnlocationnumber = 2;
+	else if ((conductanceGn>=Gth1) && (conductanceGn<Gth2)) Gnlocationnumber = 2;
 	else Gnlocationnumber = 3;
+	
 	double conductanceareapair [3] = {Gplocationnumber, Gnlocationnumber, Gplocationnumber+Gnlocationnumber}
 	return conductanceareapair [3];
 }
