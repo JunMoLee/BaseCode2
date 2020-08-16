@@ -502,12 +502,20 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	
 	if (conductanceNewGp > pmaxConductance) {
 		if(deltaWeightSign >0) possat++;
+		poscellspecifier=0;
+		saturatingposstep++;
+		possatcounter++;
+		totalsaturatingposstep +=saturatingposstep;
 		conductanceNewGp = pmaxConductance;
 	} else if (conductanceNewGp < pminConductance) {
 		conductanceNewGp = pminConductance;
 	}
 	if (conductanceNewGn > nmaxConductance) {
 		if(deltaWeightSign <0) negsat++;
+		negcellspecifier=0;
+		saturatingnegstep++;
+		negsatcounter++;
+		totalsaturatingnegstep +=saturatinnegstep;
 		conductanceNewGn = nmaxConductance;
 	}
 	else if (conductanceNewGn < nminConductance) {
@@ -553,6 +561,10 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	conductanceGn = conductanceNewGn;
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 	if((conductancePrev * conductanceNew) <0) polaritychange++;
+	if(poscellspecifier==1) 
+	saturatingposstep++;
+	if(negcellspecifier==1) 
+	saturatingnegstep++;
 	conductance = conductanceNew;
 }
 
@@ -684,12 +696,20 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	
 	if (conductanceNewGp > pmaxConductance) {
 		if(deltaWeightSign>0) possat++;
+		poscellspecifier=0;
+		saturatingposstep++;
+		possatcounter++;
+		totalsaturatingposstep +=saturatingposstep;
 		conductanceNewGp = pmaxConductance;
 	} else if (conductanceNewGp < pminConductance) {
 		conductanceNewGp = pminConductance;
 	}
 	if (conductanceNewGn > nmaxConductance) {
 		if(deltaWeightSign <0) negsat++;
+		negcellspecifier=0;
+		saturatingnegstep++;
+		negsatcounter++;
+		totalsaturatingnegstep +=saturatinnegstep;
 		conductanceNewGn = nmaxConductance;
 	}
 	else if (conductanceNewGn < nminConductance) {
@@ -735,6 +755,10 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	conductanceGn = conductanceNewGn;
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 	if((conductancePrev * conductanceNew) <0) polaritychange++;
+	if(poscellspecifier==1) 
+	saturatingposstep++;
+	if(negcellspecifier==1) 
+	saturatingnegstep++;
 	conductance = conductanceNew;
 }
 
