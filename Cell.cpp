@@ -286,7 +286,7 @@ double* eNVM::weightanalyzer(){
 	else if ((conductanceGn>=Gth1) && (conductanceGn<Gth2)) Gnlocationnumber = 2;
 	else Gnlocationnumber = 3;
 	
-	double conductanceareapair [3] = {Gplocationnumber, Gnlocationnumber, Gplocationnumber+Gnlocationnumber}
+	double conductanceareapair [3] = {Gplocationnumber, Gnlocationnumber, Gplocationnumber+Gnlocationnumber};
 	return conductanceareapair;
 }
 
