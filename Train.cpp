@@ -1617,7 +1617,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					 totalIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
 					 countIH2++;
 					}
-					else if ((0.33333<=weight1[m][n])&&(weight1[m][n]<0))
+					else if ((-0.33333<=weight1[m][n])&&(weight1[m][n]<0))
 					{GpIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
 					 GnIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH3 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
