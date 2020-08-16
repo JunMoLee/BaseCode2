@@ -271,8 +271,7 @@ negstep=0;
 polaritychange=0;
 	
 }
-
-double* eNVM::weightanalyzer(){
+vector<double> eNVM::weightanalyzer(){
 	int Gplocationnumber;
 	int Gnlocationnumber;
 	double Gth1 = param -> Gth1;
@@ -286,8 +285,12 @@ double* eNVM::weightanalyzer(){
 	else if ((conductanceGn>=Gth1) && (conductanceGn<Gth2)) Gnlocationnumber = 2;
 	else Gnlocationnumber = 3;
 	
-	double conductanceareapair [3] = {Gplocationnumber, Gnlocationnumber, Gplocationnumber+Gnlocationnumber};
-	return conductanceareapair;
+	vector<double> conductanceareapair; 
+	conductancelocationpair.push_back(Gplocationnumber);
+	conductancelocationpair.push_back(Gnlocationnumber);
+	conductancelocationpair.push_back(Gplocationnumber+Gnlocationnumber);
+	
+	return conductancelocationpair;
 }
 
 /* Real Device */
