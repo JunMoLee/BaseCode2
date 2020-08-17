@@ -49,9 +49,9 @@ Param::Param() {
 	const double
 	ll=30;
 	const double
-	dl=30;
+	dl=20;
 	const double
-	pdl=30;
+	pdl=15;
 	const double
 	rdl=10;
 	const double
@@ -159,7 +159,7 @@ Param::Param() {
 	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=2;
+	nur=6;
 	const int 
 	rnur=1;
 	const int
@@ -167,7 +167,7 @@ Param::Param() {
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=1;
+a=0;
 	
 
 switch(a){
