@@ -112,6 +112,9 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
 
+double Gth1= param->Gth1;
+double Gth2= param->Gth2;
+
 
 				
 /*Optimization functions*/
