@@ -62,8 +62,8 @@ Param::Param() {
 	weighttrack=0;
 	TrackRate=500;
 	track=0;
-	Gth1=10/3;
-	Gth2=10/3;
+	Gth1=2;
+	Gth2=8;
 	
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 1998;	// # of training images per epoch
@@ -128,10 +128,10 @@ Param::Param() {
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
 	const int
-	nuc=1;
+	nuc=0;
         ReverseUpdate = nuc;
 	const int 
-        frc=0;
+        frc=1;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
