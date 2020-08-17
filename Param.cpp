@@ -128,10 +128,10 @@ Param::Param() {
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
 	const int
-	nuc=0;
+	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=1;
+        frc=0;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -177,7 +177,7 @@ param_gn=-9;
 break;
 case 1:
 param_gp=1;
-param_gn=-5;
+param_gn=-3;
 break;
 case 2:
 param_gp=1;
