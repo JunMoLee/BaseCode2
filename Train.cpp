@@ -112,8 +112,6 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
 
-double Gth1= param->Gth1;
-double Gth2= param->Gth2;
 
 
 				
@@ -141,6 +139,9 @@ double a2[param->nOutput];  // Net output of output layer [param->nOutput]
 
 double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
+	
+double Gth1= param->Gth1;
+double Gth2= param->Gth2;
 	
 	for (int t = 0; t < epochs; t++) {
 		for (int batchSize = 0; batchSize < numTrain; batchSize++) {
