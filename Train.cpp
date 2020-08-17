@@ -1703,7 +1703,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double countGnweightrange=0;
 				 for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth1)
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
 				 if(weight1[m][n]>=Gth2/10)
 				 {countGpweightrange++;}
