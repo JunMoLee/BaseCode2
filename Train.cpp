@@ -1697,17 +1697,23 @@ double Gth2= param->Gth2;
 		cout<<"0~0.33333"<<" : "<<"IH "<<GpIH4/countIH4<<", "<<GnIH4/countIH4<<", "<<totalIH4/countIH4<<" HO "<<GpHO4/countHO4<<", "<<GnHO4/countHO4<<", "<<totalHO4/countHO4<<endl;
 		cout<<"0.33333~0.66666"<<" : "<<"IH "<<GpIH5/countIH5<<", "<<GnIH5/countIH5<<", "<<totalIH5/countIH5<<" HO "<<GpHO5/countHO5<<", "<<GnHO5/countHO5<<", "<<totalHO5/countHO5<<endl;
 		cout<<"0.66666~1"<<" : "<<"IH "<<GpIH6/countIH6<<", "<<GnIH6/countIH6<<", "<<totalIH6/countIH6<<" HO "<<GpHO6/countHO6<<", "<<GnHO6/countHO6<<", "<<totalHO6/countHO6<<endl;
-	
+	       
 		double countGprange =0;
 		double countGpweightrange=0;
 		double countGnrange =0;
 		double countGnweightrange=0;
+		double locationnumberspecifier=0;
 				 for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
+				
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 2)
+				{locationnumberspecifier++;}
+				
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
 				 if(weight1[m][n]>=Gth2/10)
 				 {countGpweightrange++;}
+
 				}
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn >= Gth2)
 				{countGnrange ++;
@@ -1719,6 +1725,10 @@ double Gth2= param->Gth2;
 				
 					 for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){
+				
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 2)
+				{locationnumberspecifier++;}
+				
 	if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
 				 if(weight2[m][n]>= Gth2/10)
@@ -1733,6 +1743,7 @@ double Gth2= param->Gth2;
 				 }
 		
 		cout<<"P(|w|>=Gth2/pconrange | Gp,Gn>=Gth2/10) = "<< countGpweightrange/countGprange<<", "<<countGnweightrange/countGnrange<<endl;
+		cout<<"count L.N(Gp)+L.N(Gn) = 2 : "<<locationnumberspecifier++<<endl;
 	/* track weights */
 	
 	// define name for file & parameters
