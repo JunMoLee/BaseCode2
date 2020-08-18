@@ -588,6 +588,8 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	if(negcellspecifier==1) 
 	saturatingnegstep++;
 	conductance = conductanceNew;
+	positivesaturatedweight=0;
+	negativesaturatedweight=0;
 }
 
 ////////new write/////////////
