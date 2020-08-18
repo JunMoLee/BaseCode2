@@ -49,9 +49,9 @@ Param::Param() {
 	const double
 	ll=30;
 	const double
-	dl=20;
+	dl=30;
 	const double
-	pdl=15;
+	pdl=30;
 	const double
 	rdl=10;
 	const double
@@ -66,7 +66,7 @@ Param::Param() {
 	Gth2=8;
 	
 	/* Algorithm parameters */
-	numTrainImagesPerEpoch = 1998;	// # of training images per epoch
+	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
@@ -159,7 +159,7 @@ Param::Param() {
 	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=6;
+	nur=2;
 	const int 
 	rnur=1;
 	const int
@@ -167,7 +167,7 @@ Param::Param() {
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=0;
+a=1;
 	
 
 switch(a){
